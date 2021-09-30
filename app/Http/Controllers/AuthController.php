@@ -43,11 +43,16 @@ class AuthController extends Controller
     }
     
     public function logout() {
-
+        auth()->logout();
+        return ['error'=>''];
     }
 
     public function refresh() {
-
+        $token = auth()->refresh();
+        return [
+            'error' => '',
+            'token' => $token
+        ];
     }
 
     public function create(Request $request) {
